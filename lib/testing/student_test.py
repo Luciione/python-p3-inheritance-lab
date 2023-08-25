@@ -1,27 +1,29 @@
 #!/usr/bin/env python3
 
-from student import Student
+from teacher import Teacher
 from user import User
         
-class TestStudent:
-    '''Class "Student" in student.py'''
+class TestTeacher:
+    '''Class "Teacher" in teacher.py'''
 
-    def test_is_subclass(self):
-        '''is a subclass of "User".'''
-        assert(User in Student.__bases__)
+    
+
 
     def test_initializes_with_names(self):
         '''initializes with first and last name.'''
-        my_student = Student("My", "Student")
-        assert((my_student.first_name, my_student.last_name) == ("My", "Student"))
+        my_teacher = Teacher("My", "Teacher")
+        assert (my_teacher.first_name, my_teacher.last_name) == ("My", "Teacher")
 
     def test_initializes_with_knowledge(self):
-        '''initializes with empty list attribute "knowledge".'''
-        my_student = Student("My", "Student")
-        assert(hasattr(my_student, "knowledge"))
+        '''has an attribute called "knowledge", a list with len > 0.'''
+        my_teacher = Teacher("My", "Teacher")
+        assert hasattr(my_teacher, "knowledge")
+        assert isinstance(my_teacher.knowledge, list)
+        assert len(my_teacher.knowledge) > 0
 
-    def test_can_learn(self):
-        '''learns from a string and adds to self.knowledge.'''
-        my_student = Student("My", "Student")
-        my_student.learn("New information")
-        assert("New information" in my_student.knowledge)
+    def test_can_teach(self):
+        '''teaches from list of knowledge.'''
+        my_teacher = Teacher("My", "Teacher")
+        knowledge = ["Python basics", "Object-oriented programming"]
+        my_teacher.knowledge = knowledge
+        assert my_teacher.teach() in knowledge

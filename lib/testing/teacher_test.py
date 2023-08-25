@@ -10,7 +10,8 @@ class TestTeacher:
 
     def test_is_subclass(self):
         '''is a subclass of "User".'''
-        assert(User in Teacher.__bases__)
+    assert issubclass(Teacher, User)
+
 
     def test_initializes_with_names(self):
         '''initializes with first and last name.'''
